@@ -93,12 +93,11 @@ x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
 
 #process wave data
 filename, extension = os.path.splitext(music_files[current_track])
-print(filename,extension)
+print(filename, extension)
 if extension != "wav":
     fnull = open(os.devnull, "w")
     pieq_tmp = os.path.expanduser("~") + "/.pieq_tmp/"
     wav_path = pieq_tmp + filename + ".wav"
-                
     if not os.path.isfile(wav_path):
         print("Decompressing...")
         sp.call(["mkdir", "-p", pieq_tmp])
@@ -119,7 +118,6 @@ num = nframes
 
 
 pygame.mixer.music.load(wav_path)
-print(wav_path)
 pygame.mixer.music.set_volume(volume)    
 pygame.mixer.music.play()
 start_time = 0.0
@@ -128,9 +126,7 @@ status = 'playing'
 
 def Visualizer(nums):
     nums = int(nums)
-    h = abs(dct(wave_data[0][nframes - nums:nframes - nums + PIXEL_SIZE],1))
-
-#print('h: ',h)
+    h = abs(dct(wave_data[0][nframes - nums:nframes - nums + PIXEL_SIZE],2))
     h = [min(PIXEL_SIZE, int(i**(1 / 2.5) * PIXEL_SIZE/ 100)+1) for i in h]
     draw_bars_pixels(h, x_color_dict=x_axis_color_dict_parcels)
 
@@ -189,15 +185,8 @@ def draw_bars_pixels(h, bgd_clr=(0,0,0), fill_clr=(255,255,255), x_color_dict=No
     
 
 while True:
-    #for event in pygame.event.get():
-    #    if event.type == pygame.QUIT:
-    #        sys.exit()
-    #    elif event.type == KEYDOWN:
-    #        controller(event.key)
-
     if num <= 0:
         status = "stopped"
-
     fpsclock.tick(FPS)
     vis(status)
 
