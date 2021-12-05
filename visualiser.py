@@ -93,6 +93,7 @@ x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
 
 #process wave data
 filename, extension = os.path.splitext(music_files[current_track])
+print(filename,extension)
 if extension != "wav":
     fnull = open(os.devnull, "w")
     pieq_tmp = os.path.expanduser("~") + "/.pieq_tmp/"
@@ -101,8 +102,8 @@ if extension != "wav":
     if not os.path.isfile(wav_path):
         print("Decompressing...")
         sp.call(["mkdir", "-p", pieq_tmp])
-        sp.call(["ffmpeg", "-i", args[1], wav_path], stdout=fnull, stderr=sp.STDOUT)
-    tmp_file_created = True
+        sp.call(["ffmpeg", "-i", music_files[current_track], wav_path], stdout=fnull, stderr=sp.STDOUT)
+        tmp_file_created = True
 else:
     tmp_file_created = False
     wav_path = music_files[current_track]
