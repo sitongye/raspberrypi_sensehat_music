@@ -5,6 +5,17 @@ import numpy as np
 import pygame
 from pygame.locals import *
 from scipy.fftpack import dct
+from sense_hat import SenseHat
+
+x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
+                             7:tuple((218, 217, 218)),
+                             0:tuple((42, 75, 114)),
+                             1:tuple((42, 75, 114)),
+                             2:tuple((114, 85, 62)),
+                             3:tuple((114, 85, 62)),
+                             4:tuple((133, 152, 172)),
+                             5:tuple((133, 152, 172))}
+
 
 class OneSong:
     def __init__(self, music_path, sensehat, album=None, song_art=None, volume=1,display_size=8):
@@ -36,8 +47,8 @@ class OneSong:
                     print("Decompressing...")
                     sp.call(["mkdir", "-p", pieq_tmp])
                     sp.call(["ffmpeg", "-i", self.music_path, wav_path], stdout=fnull, stderr=sp.STDOUT)
-                    self.wav_path = wav_path
-                    tmp_file_created = True
+                self.wav_path = wav_path
+                tmp_file_created = True
             except FileExistsError:
                 print('failed to convert to wav file')
         else:
@@ -78,17 +89,17 @@ class OneSong:
         pygame.mixer.music.load(self.wav_path)
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.play()
+        start_time = 0.0
         pygame.time.Clock().tick()
         self.status = 'playing'
 
     def _visualizer(self):
         nums = int(self.nframes)
-        h = abs(dct(self.feature_dict.get('wave_data')[0][self.features_dict['nframes'] - nums:self.features_dict['nframes']  - nums + self.display_size], 2))
+        h = abs(dct(self.feature_dict.get('wave_data')[0][self.feature_dict['nframes'] - nums:self.feature_dict['nframes']  - nums + self.display_size], 2))
         h = [min(self.display_size, int(i ** (1 / 2.5) * self.display_size / 100) + 1) for i in h]
-        return h
+        self._draw_bars_pixels(h, x_color_dict=None)
 
-    def _draw_bars_pixels(self, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
-        h = self._visualizer()
+    def _draw_bars_pixels(self, h, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
         matrix = [bgd_clr] * 64
         np_matrix = np.array(matrix).reshape(8, 8, 3)
         for i in range(len(h)):
@@ -105,11 +116,11 @@ class OneSong:
             num = self.feature_dict.get('nframes')
             return
         elif self.status == "paused":
-            self.visualizer()
+            self._visualizer()
         else:
             self.nframes -= self.feature_dict['framerate'] / self.FPS
             if self.nframes > 0:
-                self.visualizer()
+                self._visualizer()
 
     def run(self):
         '''
@@ -123,3 +134,8 @@ class OneSong:
                 self.sensehat.clear()
             self.fpsclock.tick(self.FPS)
             self.vis()
+            
+##test
+sense = SenseHat()
+testsong = OneSong('/home/pi/Music/Lightenup.mp3', sense, album=None, song_art=None, volume=1,display_size=8)
+testsong.run()
