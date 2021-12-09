@@ -17,7 +17,7 @@ x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
                              5:tuple((133, 152, 172))}
 
 
-class OneSong:
+class Track:
     def __init__(self, music_path, sensehat, album=None, song_art=None, volume=1,display_size=8):
         '''
 
@@ -137,5 +137,5 @@ class OneSong:
             
 ##test
 sense = SenseHat()
-testsong = OneSong('/home/pi/Music/Lightenup.mp3', sense, album=None, song_art=None, volume=1,display_size=8)
+testsong = Track('/home/pi/Music/Lightenup.mp3', sense, album=None, song_art=None, volume=1, display_size=8)
 testsong.run()
