@@ -93,11 +93,11 @@ class OneSong:
         pygame.time.Clock().tick()
         self.status = 'playing'
 
-    def _visualizer(self):
+    def _visualizer(self, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
         nums = int(self.nframes)
         h = abs(dct(self.feature_dict.get('wave_data')[0][self.feature_dict['nframes'] - nums:self.feature_dict['nframes']  - nums + self.display_size], 2))
         h = [min(self.display_size, int(i ** (1 / 2.5) * self.display_size / 100) + 1) for i in h]
-        self._draw_bars_pixels(h, x_color_dict=None)
+        self._draw_bars_pixels(h, bgd_clr=bgd_clr, fill_clr=fill_clr, x_color_dict=x_color_dict)
 
     def _draw_bars_pixels(self, h, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
         matrix = [bgd_clr] * 64
