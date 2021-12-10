@@ -3,12 +3,17 @@ import subprocess as sp
 import wave
 import numpy as np
 import pygame
+import time
+from time import sleep
 from pygame.locals import *
 from scipy.fftpack import dct
 from sense_hat import SenseHat
 
 
-
+background = (0,0,0)
+R = (198, 30, 74)       #raspberrytips red
+W = (255, 255, 255)
+        
 def formatwave(music_path):
     head_tail = os.path.split(music_path)
     file_name = head_tail[1]
@@ -27,7 +32,7 @@ def formatwave(music_path):
             print('failed to convert to wav file')
     else:
         wav_path = music_path
-    return wav_path
+    return wav_path, file_name
     
     
 x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
@@ -61,9 +66,8 @@ class Player:
         self.nr_tracks = len(self.music_files)
         self.idx_currenttrack = 0
         self.music_path = self.music_files[self.idx_currenttrack]
-        self.wav_path = formatwave(self.music_path)
+        self.wav_path, self.file_name = formatwave(self.music_path)
         # TODO: hold out to external configuration
-            
         self.display_size = display_size
         self.album = album
         self.song_art = song_art
@@ -105,7 +109,6 @@ class Player:
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.play()
         start_time = 0.0
-        pygame.time.Clock().tick()
         self.status = 'playing'
 
     def _visualizer(self, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
@@ -144,44 +147,66 @@ class Player:
         play music and visualise
         :return:
         '''
+        curr_time = time.localtime()
+        curr_clock = time.strftime("%H:%M:%S", curr_time)
+        # greeting
+        if int(curr_clock.split(':')[0])<=12:
+            greeting = 'Guten Morgen'
+        elif int(curr_clock.split(':')[0])<17:
+            greeting = "Guten Nachmittag"
+        else:
+            greeting = 'Guten Abend'
+        # print greeting
+        self.sensehat.clear()
+        self.sensehat.show_message("{}, Martin :)".format(greeting), 0.05, W, background)
+        
         while True:
+            #self.sensehat.clear()
+            print(self.file_name)
+            self.sensehat.show_message("{}".format(self.file_name), 0.05, W, background)
             self.play()
             if self.nframes <= 0:
                 self.status = "stopped"
-                self.sensehat.clear()
+                #self.sensehat.clear()
             while pygame.mixer.music.get_busy():
                 self.fpsclock.tick(self.FPS)
                 self.vis()
                 for x in self.sensehat.stick.get_events():
-                    if x.direction == 'right':
+                    if x.direction == 'right' and x.action == 'pressed':
                         self.idx_currenttrack = self.idx_currenttrack + 1
                         if self.idx_currenttrack >= self.nr_tracks:
                             self.idx_currenttrack = 0
                         pygame.mixer.music.stop()
-                        self.sensehat.clear()
+                        #self.sensehat.clear()
                         self.music_path = self.music_files[self.idx_currenttrack]
-                        self.wav_path = formatwave(self.music_path)
+                        self.wav_path, self.file_name = formatwave(self.music_path)
                         self.feature_dict = self.get_features()
                         self.nframes = self.feature_dict.get('nframes')
+                        #self.sensehat.clear()
+                        print(self.file_name, self.wav_path)
+                        self.sensehat.show_message("{}".format(self.file_name), 0.05, W, background)
                         self.play()
                         start_time = 0.0
-                    if x.direction == 'left':
+                    if x.direction == 'left' and x.action == 'pressed':
                         self.idx_currenttrack = self.idx_currenttrack - 1
                         if self.idx_currenttrack < 0:
                             self.idx_currenttrack = 0
                         pygame.mixer.music.stop()
-                        self.sensehat.clear()
+                        #self.sensehat.clear()
                         self.music_path = self.music_files[self.idx_currenttrack]
-                        self.wav_path = formatwave(self.music_path)
+                        self.wav_path, self.file_name = formatwave(self.music_path)
                         self.feature_dict = self.get_features()
                         self.nframes = self.feature_dict.get('nframes')
+                        #self.sensehat.clear()
+                        print(self.file_name, self.wav_path)
+                        self.sensehat.show_message("{}".format(self.file_name), 0.05, W, background)
                         self.play()
-                    if x.direction == 'up':
+                    if x.direction == 'up' and x.action == 'pressed':
                         self.volume = self.volume + 0.05
                         if self.volume >- 1.0:
                             self.volume = 1.0
                         pygame.mixer.music.set_volume(self.volume)
-                    if x.direction == 'down':
+                    if x.direction == 'down' and x.action == 'pressed':
                         self.volume = self.volume - 0.05
                     if self.volume < 0.0:
                         self.volume = 0.0
