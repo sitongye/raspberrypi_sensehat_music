@@ -7,6 +7,29 @@ from pygame.locals import *
 from scipy.fftpack import dct
 from sense_hat import SenseHat
 
+
+
+def formatwave(music_path):
+    head_tail = os.path.split(music_path)
+    file_name = head_tail[1]
+    filename_raw, extension = os.path.splitext(file_name)
+        # check if the file is in wav form
+    if extension != "wav":
+        try:
+            fnull = open(os.devnull, "w")
+            pieq_tmp = os.path.expanduser("~") + "/.pieq_tmp/"
+            wav_path = pieq_tmp + filename_raw + ".wav"
+            if not os.path.isfile(wav_path):
+                print("Decompressing...")
+                sp.call(["mkdir", "-p", pieq_tmp])
+                sp.call(["ffmpeg", "-i", music_path, wav_path], stdout=fnull, stderr=sp.STDOUT)
+        except FileExistsError:
+            print('failed to convert to wav file')
+    else:
+        wav_path = music_path
+    return wav_path
+    
+    
 x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
                              7:tuple((218, 217, 218)),
                              0:tuple((42, 75, 114)),
@@ -17,8 +40,8 @@ x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
                              5:tuple((133, 152, 172))}
 
 
-class Track:
-    def __init__(self, music_path, sensehat, album=None, song_art=None, volume=1,display_size=8):
+class Player:
+    def __init__(self, music_basepath, sensehat, album=None, song_art=None, volume=1,display_size=8, viz_clr=None):
         '''
 
         :param music_path: str. absolute path to music file
@@ -28,31 +51,23 @@ class Track:
         :param volume: int. 1 by default
         '''
         self.sensehat = sensehat
-        self.music_path = music_path
+        self.viz_clr = viz_clr
+        self.music_basepath = music_basepath #folder
+        self.music_files = []
+        for root, dirs, files in os.walk(self.music_basepath):
+            for file in files:
+                self.music_files.append(os.path.join(root,file))
+        self.music_files.sort()
+        self.nr_tracks = len(self.music_files)
+        self.idx_currenttrack = 0
+        self.music_path = self.music_files[self.idx_currenttrack]
+        self.wav_path = formatwave(self.music_path)
         # TODO: hold out to external configuration
+            
         self.display_size = display_size
         self.album = album
         self.song_art = song_art
         self.volume = volume
-        head_tail = os.path.split(self.music_path)
-        self.file_name = head_tail[1]
-        filename_raw, extension = os.path.splitext(self.file_name)
-        # check if the file is in wav form
-        if extension != "wav":
-            try:
-                fnull = open(os.devnull, "w")
-                pieq_tmp = os.path.expanduser("~") + "/.pieq_tmp/"
-                wav_path = pieq_tmp + filename_raw + ".wav"
-                if not os.path.isfile(wav_path):
-                    print("Decompressing...")
-                    sp.call(["mkdir", "-p", pieq_tmp])
-                    sp.call(["ffmpeg", "-i", self.music_path, wav_path], stdout=fnull, stderr=sp.STDOUT)
-                self.wav_path = wav_path
-                tmp_file_created = True
-            except FileExistsError:
-                print('failed to convert to wav file')
-        else:
-            self.wav_path = self.music_path
         self.status = 'stopped'
         self.feature_dict = self.get_features()
         self.nframes = self.feature_dict.get('nframes') # dynamically changes
@@ -97,6 +112,8 @@ class Track:
         nums = int(self.nframes)
         h = abs(dct(self.feature_dict.get('wave_data')[0][self.feature_dict['nframes'] - nums:self.feature_dict['nframes']  - nums + self.display_size], 2))
         h = [min(self.display_size, int(i ** (1 / 2.5) * self.display_size / 100) + 1) for i in h]
+        if self.viz_clr:
+            x_color_dict = self.viz_clr
         self._draw_bars_pixels(h, bgd_clr=bgd_clr, fill_clr=fill_clr, x_color_dict=x_color_dict)
 
     def _draw_bars_pixels(self, h, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
@@ -127,15 +144,50 @@ class Track:
         play music and visualise
         :return:
         '''
-        self.play()
         while True:
+            self.play()
             if self.nframes <= 0:
                 self.status = "stopped"
                 self.sensehat.clear()
-            self.fpsclock.tick(self.FPS)
-            self.vis()
-            
+            while pygame.mixer.music.get_busy():
+                self.fpsclock.tick(self.FPS)
+                self.vis()
+                for x in self.sensehat.stick.get_events():
+                    if x.direction == 'right':
+                        self.idx_currenttrack = self.idx_currenttrack + 1
+                        if self.idx_currenttrack >= self.nr_tracks:
+                            self.idx_currenttrack = 0
+                        pygame.mixer.music.stop()
+                        self.sensehat.clear()
+                        self.music_path = self.music_files[self.idx_currenttrack]
+                        self.wav_path = formatwave(self.music_path)
+                        self.feature_dict = self.get_features()
+                        self.nframes = self.feature_dict.get('nframes')
+                        self.play()
+                        start_time = 0.0
+                    if x.direction == 'left':
+                        self.idx_currenttrack = self.idx_currenttrack - 1
+                        if self.idx_currenttrack < 0:
+                            self.idx_currenttrack = 0
+                        pygame.mixer.music.stop()
+                        self.sensehat.clear()
+                        self.music_path = self.music_files[self.idx_currenttrack]
+                        self.wav_path = formatwave(self.music_path)
+                        self.feature_dict = self.get_features()
+                        self.nframes = self.feature_dict.get('nframes')
+                        self.play()
+                    if x.direction == 'up':
+                        self.volume = self.volume + 0.05
+                        if self.volume >- 1.0:
+                            self.volume = 1.0
+                        pygame.mixer.music.set_volume(self.volume)
+                    if x.direction == 'down':
+                        self.volume = self.volume - 0.05
+                    if self.volume < 0.0:
+                        self.volume = 0.0
+                    pygame.mixer.music.set_volume(self.volume)
 ##test
 sense = SenseHat()
-testsong = Track('/home/pi/Music/Lightenup.mp3', sense, album=None, song_art=None, volume=1, display_size=8)
-testsong.run()
+
+testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/music', sense, album=None, song_art=None, volume=1,display_size=8, viz_clr=x_axis_color_dict_parcels)
+testplayer.run()
