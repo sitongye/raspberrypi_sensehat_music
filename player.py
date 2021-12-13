@@ -193,14 +193,14 @@ class Player:
                 if x>2 or y>2 or z>2:
                     self.idx_currenttrack = random.choice(range(self.nr_tracks))
                     print('play ',self.file_name)
-                    #self.play()
+                    self.play()
                 for x in self.sensehat.stick.get_events():
                     if x.direction == 'right' and x.action == 'pressed':
                         self.idx_currenttrack = self.idx_currenttrack + 1
                         if self.idx_currenttrack >= self.nr_tracks:
                             self.idx_currenttrack = 0
                         print('play ',self.file_name)
-                        #self.play()
+                        self.play()
                         start_time = 0.0
                     if x.direction == 'left' and x.action == 'pressed':
                         self.idx_currenttrack = self.idx_currenttrack - 1
@@ -209,7 +209,7 @@ class Player:
                         pygame.mixer.music.stop()
                         #self.sensehat.clear()
                         print('play ',self.file_name)
-                        #self.play()
+                        self.play()
                     if x.direction == 'up' and x.action == 'pressed':
                         self.volume = self.volume + 0.05
                         if self.volume >- 1.0:
@@ -223,5 +223,5 @@ class Player:
 ##test
 sense = SenseHat()
 
-testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/music', sense, album=None, song_art=None, volume=1,display_size=8, viz_clr=x_axis_color_dict_parcels)
+testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/music', sense, volume=1,display_size=8, viz_clr=x_axis_color_dict_parcels)
 testplayer.run()
