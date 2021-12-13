@@ -46,12 +46,11 @@ x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
 
 
 class Player:
-    def __init__(self, music_basepath, sensehat, album=None, song_art=None, volume=1,display_size=8, viz_clr=None):
+    def __init__(self, music_basepath, sensehat, volume=1,display_size=8, viz_clr=None):
         '''
 
         :param music_path: str. absolute path to music file
         :param sensehat: initialised sensehat object
-        :param album: Album Class Obejct
         :param song_art: PixelArt Class Object
         :param volume: int. 1 by default
         '''
@@ -69,15 +68,13 @@ class Player:
         self.wav_path, self.file_name = formatwave(self.music_path)
         # TODO: hold out to external configuration
         self.display_size = display_size
-        self.album = album
-        self.song_art = song_art
         self.volume = volume
         self.status = 'stopped'
         self.feature_dict = self.get_features()
         self.nframes = self.feature_dict.get('nframes') # dynamically changes
         #TODO: hold out to external configuration
         self.FPS = 10
-        pygame.mixer.init()
+        pygame.mixer.init(44100, -16, 2, 64)
         self.fpsclock = pygame.time.Clock()
 
     def get_features(self):
@@ -118,6 +115,12 @@ class Player:
         start_time = 0.0
         self.status = 'playing'
 
+    def play_metronome(self):
+        pygame.mixer.music.stop()
+        self.sensehat.clear()
+        self.music_path, self.file_name = formatwave(self.music_path)
+
+
     def _visualizer(self, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
         sleep(0.08)
         nums = int(self.nframes)
@@ -150,7 +153,8 @@ class Player:
             if self.nframes > 0:
                 self._visualizer()
 
-    def run(self):
+
+    def run(self, metronome_on=False):
         '''
         play music and visualise
         :return:
@@ -172,6 +176,7 @@ class Player:
         while True:
             #self.sensehat.clear()
             self.play()
+
                 #self.sensehat.clear()
             while pygame.mixer.music.get_busy():
                 self.fpsclock.tick(self.FPS)
@@ -188,14 +193,14 @@ class Player:
                 if x>2 or y>2 or z>2:
                     self.idx_currenttrack = random.choice(range(self.nr_tracks))
                     print('play ',self.file_name)
-                    self.play()
+                    #self.play()
                 for x in self.sensehat.stick.get_events():
                     if x.direction == 'right' and x.action == 'pressed':
                         self.idx_currenttrack = self.idx_currenttrack + 1
                         if self.idx_currenttrack >= self.nr_tracks:
                             self.idx_currenttrack = 0
                         print('play ',self.file_name)
-                        self.play()
+                        #self.play()
                         start_time = 0.0
                     if x.direction == 'left' and x.action == 'pressed':
                         self.idx_currenttrack = self.idx_currenttrack - 1
@@ -204,7 +209,7 @@ class Player:
                         pygame.mixer.music.stop()
                         #self.sensehat.clear()
                         print('play ',self.file_name)
-                        self.play()
+                        #self.play()
                     if x.direction == 'up' and x.action == 'pressed':
                         self.volume = self.volume + 0.05
                         if self.volume >- 1.0:

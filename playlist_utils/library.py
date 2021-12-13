@@ -75,11 +75,16 @@ class Library:
             self.library.get(art).get('albums')} for art in self.library}
         return self.collections
 
+    def get_audiofeatures(self, track_id):
+        return self.spotify_client.audio_analysis(track_id)
 
 
 # test
-#lib = Library()
-#print(lib.add_artist('Parcels'))
+#parcels = Library()
+#parcels.add_artist('Parcels')
+#parcels.update_mapping()
+
+
 
 
 
