@@ -83,9 +83,7 @@ with open(os.path.join('.','playlist_utils','cache_jsons','pathuri_mapping.json'
 #    audio_feature = SPOTIFY_CLIENT.audio_analysis(uri)
 #    with open("/home/pi/pythonproject/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(uri),'w') as file:
 #        json.dump(audio_feature, file)
-    
-    
-	
+
 
 
 def wait(delay):
