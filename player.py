@@ -7,8 +7,16 @@ import time
 from time import sleep
 from pygame.locals import *
 from scipy.fftpack import dct
-from sense_hat import SenseHat
+from sense_emu import SenseHat
 import random
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+#from metronome.metronome import metronome
+from dotenv import load_dotenv
+import json
+
+load_dotenv('.env')
+SPOTIFY_CLIENT = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
 background = (0,0,0)
 R = (198, 30, 74)       #raspberrytips red
@@ -19,7 +27,7 @@ def formatwave(music_path):
     file_name = head_tail[1]
     filename_raw, extension = os.path.splitext(file_name)
         # check if the file is in wav form
-    if extension != "wav":
+    if extension != ".wav":
         try:
             fnull = open(os.devnull, "w")
             pieq_tmp = os.path.expanduser("~") + "/.pieq_tmp/"
@@ -32,6 +40,7 @@ def formatwave(music_path):
             print('failed to convert to wav file')
     else:
         wav_path = music_path
+    file_name = '.'.join(file_name.split('.')[:-1])
     return wav_path, file_name
     
     
@@ -45,6 +54,11 @@ x_axis_color_dict_parcels = {6:tuple((218, 217, 218)),
                              5:tuple((133, 152, 172))}
 
 
+def wait(delay):
+    end_time = time.time() + delay
+    while end_time > time.time():
+        continue
+
 class Player:
     def __init__(self, music_basepath, sensehat, volume=1,display_size=8, viz_clr=None):
         '''
@@ -54,6 +68,9 @@ class Player:
         :param song_art: PixelArt Class Object
         :param volume: int. 1 by default
         '''
+        # load mapping
+        with open(os.path.join('.','playlist_utils','cache_jsons','pathuri_mapping.json')) as file:
+            pathuri_mapping = json.load(file, encoding='utf8')
         self.sensehat = sensehat
         self.viz_clr = viz_clr
         self.music_basepath = music_basepath #folder
@@ -66,6 +83,15 @@ class Player:
         self.idx_currenttrack = 0
         self.music_path = self.music_files[self.idx_currenttrack]
         self.wav_path, self.file_name = formatwave(self.music_path)
+        self.track_uri = pathuri_mapping.get(self.file_name+'.wav',None)
+        print('filename', self.file_name+'.wav')
+        print('track_uri',self.track_uri)
+        if self.track_uri is not None:
+            self.audio_features = SPOTIFY_CLIENT.audio_analysis(self.track_uri)
+        else:
+            self.audio_features = {}
+        print(self.audio_features)
+        
         # TODO: hold out to external configuration
         self.display_size = display_size
         self.volume = volume
@@ -75,6 +101,7 @@ class Player:
         #TODO: hold out to external configuration
         self.FPS = 10
         pygame.mixer.init(44100, -16, 2, 64)
+        pygame.mixer.set_num_channels(5)
         self.fpsclock = pygame.time.Clock()
 
     def get_features(self):
@@ -101,20 +128,47 @@ class Player:
         hms = ("%02d:%02d:%02d" % (h, m, s))
         return hms
 
-    def play(self):
+    def play(self, metronome_on=False):
         pygame.mixer.music.stop()
         self.sensehat.clear()
         self.music_path = self.music_files[self.idx_currenttrack]
         self.wav_path, self.file_name = formatwave(self.music_path)
         self.feature_dict = self.get_features()
         self.nframes = self.feature_dict.get('nframes')
-        self.sensehat.show_message("Now Playing: {}".format(self.file_name.split('.')[0]), 0.05, W, background)
+        self.sensehat.show_message("Now Playing: {}".format(self.file_name), 0.05, W, background)
         pygame.mixer.music.load(self.wav_path)
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.play()
         start_time = 0.0
         self.status = 'playing'
-
+        if metronome_on:
+            if self.audio_features:
+                bpm = round(self.audio_features.get('track').get('tempo'))
+                print(float(bpm), "bpm")
+                delay = 60/bpm
+                count = 0
+                beat = 0
+                mode = 4
+                multiple = 8
+                eo_fadein = self.audio_features.get('track').get('end_of_fade_in')
+                if eo_fadein!= 0:
+                    wait(eo_fadein)
+                while not self.sensehat.stick.get_events()[-1].direction!='middle':
+                # increment count after every wait and beat after ever 4 counts
+                    count += 1
+                    if count > mode:
+                        count = 1
+                        beat += 1
+                    # set metronome audio according to beat count
+                    #wave_obj = simpleaudio.WaveObject.from_wave_file('./metronome/metronome.wav')
+                    metronome_sound = pygame.mixer.Sound('./metronome/metronome.wav')
+                    pygame.mixer.find_channel(True).play(metronome_sound)
+                    if count == 1:
+                        metronome_up = pygame.mixer.Sound('./metronome/metronomeup.wav')
+                        pygame.mixer.find_channel(True).play(metronome_up)
+                    wait(delay-0.01)
+            
+            
     def play_metronome(self):
         pygame.mixer.music.stop()
         self.sensehat.clear()
@@ -154,7 +208,7 @@ class Player:
                 self._visualizer()
 
 
-    def run(self, metronome_on=False):
+    def run(self):
         '''
         play music and visualise
         :return:
@@ -176,8 +230,6 @@ class Player:
         while True:
             #self.sensehat.clear()
             self.play()
-
-                #self.sensehat.clear()
             while pygame.mixer.music.get_busy():
                 self.fpsclock.tick(self.FPS)
                 self.vis()
@@ -195,6 +247,8 @@ class Player:
                     print('play ',self.file_name)
                     self.play()
                 for x in self.sensehat.stick.get_events():
+                    # turn on metronome
+                    #if x.direction == 'right' and x.action == 'pressed':
                     if x.direction == 'right' and x.action == 'pressed':
                         self.idx_currenttrack = self.idx_currenttrack + 1
                         if self.idx_currenttrack >= self.nr_tracks:
@@ -217,11 +271,11 @@ class Player:
                         pygame.mixer.music.set_volume(self.volume)
                     if x.direction == 'down' and x.action == 'pressed':
                         self.volume = self.volume - 0.05
-                    if self.volume < 0.0:
-                        self.volume = 0.0
-                    pygame.mixer.music.set_volume(self.volume)
+                        if self.volume < 0.0:
+                            self.volume = 0.0
+                        pygame.mixer.music.set_volume(self.volume)
 ##test
 sense = SenseHat()
 
-testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/music', sense, volume=1,display_size=8, viz_clr=x_axis_color_dict_parcels)
+testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/Music', sense, volume=1,display_size=8, viz_clr=x_axis_color_dict_parcels)
 testplayer.run()

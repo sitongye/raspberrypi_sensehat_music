@@ -1,14 +1,20 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import os
+import json
+import yaml
+from dotenv import load_dotenv
+
+load_dotenv('.env')
+
+def save_as_cache(dct, outputpath):
+    with open(outputpath, 'w') as outfile:
+        json.dump(dct, outfile)
+
 
 class Library:
-    def __init__(self, spotify_client_id="90b9bbdd175d418bbdd1e0a9dda6991c", spotify_client_secret='af4e3f49c1174efbbc0c615685e6fc09'):
+    def __init__(self):
     # TODO: move credentials to env file
-        self.spotify_client_id = spotify_client_id
-        self.spotify_client_secret = spotify_client_secret
-        os.environ["SPOTIPY_CLIENT_ID"] = self.spotify_client_id
-        os.environ["SPOTIPY_CLIENT_SECRET"] = self.spotify_client_secret
         # initialize spotify client
         self.spotify_client = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
         self.library = {}
@@ -19,6 +25,7 @@ class Library:
         self.track_nameuri_mapping = {}
         self.track_uriname_mapping = {}
         self.collections = {}
+        self.pathuri_mapping = {}
 
     def add_artist(self, search_name, save_cache=True):
         # initialize spotify client
@@ -44,6 +51,7 @@ class Library:
         self.library[artist_name] = ARTISTS.get(artist_name)
         return ARTISTS
 
+
     def update_mapping(self):
         '''
         :param type: {'artist', 'album', 'track')
@@ -68,25 +76,47 @@ class Library:
 
     def update_collections(self):
         # TODO add cache to YAML file
-        self.collections = {(self.library.get(art).get('uri'), 'artist'): {
-            (self.library.get(art).get('albums').get(al).get('uri'), 'album'): [
-                (self.library.get(art).get('albums').get(al).get('tracks').get(tr).get('uri'), 'track') for tr
+        self.collections = {self.library.get(art).get('uri'): {
+            self.library.get(art).get('albums').get(al).get('uri'): [
+                self.library.get(art).get('albums').get(al).get('tracks').get(tr).get('uri') for tr
                 in self.library.get(art).get('albums').get(al).get('tracks')] for al in
             self.library.get(art).get('albums')} for art in self.library}
         return self.collections
 
-    def get_audiofeatures(self, track_id):
+    def _get_audiofeatures(self, track_id):
         return self.spotify_client.audio_analysis(track_id)
+    
+    def get_trackpath_uri_mapping(self, basemusicpath=r'/home/pi/pythonproject/raspberrypi_sensehat_music/Music/'):
+        if self.track_nameuri_mapping is None:
+            self.update_mapping()
+        music_files = []
+        for root, dirs, files in os.walk(basemusicpath):
+            for file in files:
+                 music_files.append(os.path.join(root,file))
+        path_uri = {os.path.split(song_path)[1]: self.track_nameuri_mapping.get(os.path.split(song_path)[1].split('.')[-2].strip(), None) for song_path in music_files}
+        self.pathuri_mapping = path_uri
+        return path_uri
+    
 
 
 # test
-#parcels = Library()
-#parcels.add_artist('Parcels')
-#parcels.update_mapping()
+parcels = Library()
+parcels.add_artist('Parcels')
+parcels.update_mapping()
+parcels.update_collections()
+parcels.get_trackpath_uri_mapping()
 
 
 
 
+#save_as_cache(parcels.library, 'library.json')
+#save_as_cache(parcels.artist_nameuri_mapping,'artist_nameuri_mapping.json')
+#save_as_cache(parcels.artist_uriname_mapping,'artist_uriname_mapping.json') 
+#save_as_cache(parcels.album_nameuri_mapping, 'album_nameuri_mapping.json')
+#save_as_cache(parcels.album_uriname_mapping, 'album_uriname_mapping.json')
+#save_as_cache(parcels.track_nameuri_mapping, 'track_nameuri_mapping.json')
+#save_as_cache(parcels.track_uriname_mapping, 'track_uriname_mapping.json')
+#save_as_cache(parcels.collections, 'collections.json')
 
 
 

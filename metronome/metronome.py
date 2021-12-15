@@ -43,4 +43,4 @@ def metronome(bpm, track_path):
         # Remove this after testing
         wait(delay-0.01)
 
-metronome(123, '/home/sitongyewhiplash/PycharmProjects/rpi_sensehat/raspberrypi_sensehat_music/music/Parcels/Lightenup.wav')
+metronome(123, '/home/pi/pythonproject/raspberrypi_sensehat_music/Music/Parcels/Lightenup.wav')
