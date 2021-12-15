@@ -12,7 +12,7 @@ import random
 #import spotipy
 #from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import wave
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import json
 import simpleaudio
 scope = "user-library-read"
@@ -337,9 +337,11 @@ class Player:
                         if self.volume < 0.0:
                             self.volume = 0.0
                         pygame.mixer.music.set_volume(self.volume)
-            self.idx_currenttrack = self.idx_currenttrack + 1
+                    if x.direction == 'middle' and x.action == 'held':
+						return None
+			self.idx_currenttrack = self.idx_currenttrack + 1
             if self.idx_currenttrack >= self.nr_tracks:
-                self.idx_currenttrack = 0
+				self.idx_currenttrack = 0
 ##test
 sense = SenseHat()
 testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/Music', sense, volume=1,display_size=8)
