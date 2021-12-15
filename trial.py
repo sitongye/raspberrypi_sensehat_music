@@ -183,7 +183,8 @@ class Player:
         self.nframes = self.feature_dict.get('nframes')
         self.track_uri = pathuri_mapping.get(self.file_name+'.wav',None)
         if self.track_uri is not None:
-            self.audio_features = SPOTIFY_CLIENT.audio_analysis(self.track_uri)
+            with open ("/home/pi/pythonproject/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(self.track_uri)) as f:
+                self.audio_features = json.load(f)
         else:
             self.audio_features = {}
         if self.audio_features:
