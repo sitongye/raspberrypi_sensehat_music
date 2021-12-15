@@ -39,7 +39,7 @@ def formatwave(music_path):
             if not os.path.isfile(wav_path):
                 print("Decompressing...")
                 sp.call(["mkdir", "-p", pieq_tmp])
-                sp.call(["ffmpeg", "-i", music_path, wav_path], stdout=fnull, stderr=sp.STDOUT)
+                sp.call(["ffmpeg", "-i", music_path, wav_path], stdout=sfnull, stderr=sp.STDOUT)
         except FileExistsError:
             print('failed to convert to wav file')
     else:
@@ -339,14 +339,9 @@ class Player:
                             self.volume = 0.0
                         pygame.mixer.music.set_volume(self.volume)
                     if x.direction == 'middle' and x.action == 'held':
-						return None
-			self.idx_currenttrack = self.idx_currenttrack + 1
-            if self.idx_currenttrack >= self.nr_tracks:
-				self.idx_currenttrack = 0
+                        return None
+
 ##test
 sense = SenseHat()
 testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/Music', sense, volume=1,display_size=8)
 testplayer.run(greeting=True)
-
-
-SPOTIFY_CLIENT.audio_analysis(self.track_uri)
