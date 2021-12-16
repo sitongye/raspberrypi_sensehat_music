@@ -74,8 +74,8 @@ ALBUM_PALETTE = {'PARCELS': {6:tuple((218, 217, 218)),
                              7:tuple((255,255,255))}
                  }
 
-with open(os.path.join('.','playlist_utils','cache_jsons','pathuri_mapping.json')) as file:
-	pathuri_mapping = json.load(file, encoding='utf8')
+with open(os.path.join('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/playlist_utils','cache_jsons','pathuri_mapping.json')) as file:
+	pathuri_mapping = json.load(file)
 	
 # dump all audio_features
 #for key in pathuri_mapping:
@@ -116,10 +116,8 @@ class Player:
         print('filename', self.file_name+'.wav')
         print('track_uri',self.track_uri)
         if self.track_uri is not None:
-            with open ("/home/pi/pythonproject/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(self.track_uri)) as f:
+            with open ("/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(self.track_uri)) as f:
                 self.audio_features = json.load(f)
-                
-                
         else:
             self.audio_features = {}
         # TODO: hold out to external configuration
@@ -169,7 +167,7 @@ class Player:
         pygame.mixer.music.play()
         self.status = 'playing'
         self.status = 'paused'
-        self.sensehat.show_message("Now Playing: {}".format(self.file_name), 0.04, W, background)
+        self.sensehat.show_message("{}".format(self.file_name), 0.03, W, background)
         if self.music_path.split('/')[-2].upper() in ALBUM_PALETTE:
             self.viz_clr = ALBUM_PALETTE.get(self.music_path.split('/')[-2].upper())
         self.status = 'playing'
@@ -183,12 +181,13 @@ class Player:
         self.nframes = self.feature_dict.get('nframes')
         self.track_uri = pathuri_mapping.get(self.file_name+'.wav',None)
         if self.track_uri is not None:
-            with open ("/home/pi/pythonproject/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(self.track_uri)) as f:
+            with open ("/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(self.track_uri)) as f:
                 self.audio_features = json.load(f)
         else:
             self.audio_features = {}
         if self.audio_features:
             bpm = round(self.audio_features.get('track').get('tempo'))
+            self.sensehat.show_message("bpm:{}".format(bpm), 0.1, W, background)
             metronome_on = True
             print(float(bpm), "bpm")
             delay = 60.0/float(bpm)
@@ -207,9 +206,9 @@ class Player:
         #self.status = 'playing'
         if eo_fadein!= 0.0:
             print('fade in',eo_fadein)
-            wait(self.audio_features.get('beats')[0].get('start'))
+            wait(self.audio_features.get('beats')[0].get('start')+0.005)
         else:
-            wait(0.001)
+            wait(0.005)
 
         while metronome_on:
             start = time.time()
@@ -219,20 +218,21 @@ class Player:
                 print('stopped')
                 metronome_on = False
                 break
-            
                 # increment count after every wait and beat after ever 4 counts
             count += 1
             if count > mode:
                 count = 1
                 beat += 1
                     # set metronome audio according to beat count
-                    #wave_obj = simpleaudio.WaveObject.from_wave_file('./metronome/metronome.wav')
-            wave_obj = simpleaudio.WaveObject.from_wave_file('./metronome/metronome.wav')
+            
+            #wave_obj = simpleaudio.WaveObject.from_wave_file('./metronome/metronome.wav')
+            wave_obj = simpleaudio.WaveObject.from_wave_file('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/metronome/metronome.wav')
             if count == 1:
-                wave_obj = simpleaudio.WaveObject.from_wave_file('./metronome/metronomeup.wav')
+                wave_obj = simpleaudio.WaveObject.from_wave_file('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/metronome/metronomeup.wav')
             exec_time = time.time()-start
             play_obj = wave_obj.play()
-            wait(delay-0.007)
+            
+            wait(delay-exec_time-0.006)
         
     def _visualizer(self, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
         nums = int(self.nframes)
@@ -284,8 +284,8 @@ class Player:
                 greeting = 'Guten Abend'
             # print greeting
             self.sensehat.clear()
-            self.sensehat.show_message("{}, Martin :)".format(greeting), 0.06, W, background)
-            img = self.sensehat.load_image('/home/pi/pythonproject/raspberrypi_sensehat_music/pixels/wink.png')
+            self.sensehat.show_message("{}, Martin :)".format(greeting), 0.04, W, background)
+            img = self.sensehat.load_image('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/pixels/wink.png')
             self.sensehat.set_pixels(img)
             sleep(5)
         
@@ -343,5 +343,5 @@ class Player:
 
 ##test
 sense = SenseHat()
-testplayer = Player('/home/pi/pythonproject/raspberrypi_sensehat_music/Music', sense, volume=1,display_size=8)
+testplayer = Player('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/Music', sense, volume=1,display_size=8)
 testplayer.run(greeting=True)
