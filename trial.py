@@ -109,23 +109,11 @@ class Player:
                 self.music_files.append(os.path.join(root,file))
         self.music_files.sort()
         self.nr_tracks = len(self.music_files)
-        self.idx_currenttrack = 0
-        self.music_path = self.music_files[self.idx_currenttrack]
-        self.wav_path, self.file_name = formatwave(self.music_path)
-        self.track_uri = pathuri_mapping.get(self.file_name+'.wav',None)
-        print('filename', self.file_name+'.wav')
-        print('track_uri',self.track_uri)
-        if self.track_uri is not None:
-            with open ("/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(self.track_uri)) as f:
-                self.audio_features = json.load(f)
-        else:
-            self.audio_features = {}
-        # TODO: hold out to external configuration
+        self.idx_currenttrack = -1
         self.display_size = display_size
         self.volume = volume
         self.status = 'stopped'
-        self.feature_dict = self.get_features()
-        self.nframes = self.feature_dict.get('nframes') # dynamically changes
+
         #TODO: hold out to external configuration
         self.FPS = 10
         self.fpsclock = pygame.time.Clock()
@@ -291,6 +279,9 @@ class Player:
         
         while True:
             #self.sensehat.clear()
+            self.idx_currenttrack = self.idx_currenttrack + 1
+            if self.idx_currenttrack >= self.nr_tracks:
+                self.idx_currenttrack = 0
             self.play()
                 #self.sensehat.clear()
             while pygame.mixer.music.get_busy():
@@ -298,9 +289,6 @@ class Player:
                 self.vis()
                 if self.nframes <= 0:
                     self.status = "stopped"
-                    self.idx_currenttrack = self.idx_currenttrack + 1
-                    if self.idx_currenttrack >= self.nr_tracks:
-                        self.idx_currenttrack = 0
                 x,y,z = self.sensehat.get_accelerometer_raw().values()
                 x = abs(x)
                 y = abs(y)
