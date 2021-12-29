@@ -6,9 +6,11 @@ import subprocess as sp
 prefix = ''
 
 playlist_id = [
-    #'OLAK5uy_nkbeXTmdInAD2lmdRXwe75PSb-6XF3Hf8',
-    # 'OLAK5uy_lLJK7Z5OSt6XzI7rcgDmeIWpqervk2ycE',
-    'OLAK5uy_lYYWunHFzb7MdOxzlF_f9xeFL_Bxlth7k']
+    "OLAK5uy_m33d-iqwXjPK2lcUZy1_Jy8cj6Sa7dizc",
+    "OLAK5uy_lGZXAEcoxRuRbOYS65uBZ7EyCN1BctcoI",
+    "OLAK5uy_k6sXMGx9EHlf2rCpoctp0azMSECiHDDgk"
+
+]
 
 video_list = []
 
@@ -58,7 +60,3 @@ for playlist in playlist_id:
             sp.call(['youtube-dl', '--rm-cache-dir'])
             print('error: ', albumtitle)
             continue
-
-
-with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-    ydl.download(['https://www.youtube.com/watch?v=ltavreTy5vI'])

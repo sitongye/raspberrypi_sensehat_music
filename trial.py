@@ -9,22 +9,18 @@ from pygame.locals import *
 from scipy.fftpack import dct
 from sense_hat import SenseHat
 import random
-#import spotipy
-#from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import wave
 #from dotenv import load_dotenv
 import json
 import simpleaudio
-scope = "user-library-read"
 
+with open('config.json', 'r') as file:
+    CONFIG = json.load(file)
 
 background = (0,0,0)
 R = (198, 30, 74)       #raspberrytips red
 W = (255, 255, 255)
 
-#load_dotenv('.env')
-#SPOTIFY_CLIENT = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
-#SPOTIFY_CLIENT = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
         
 def formatwave(music_path):
     head_tail = os.path.split(music_path)
@@ -48,43 +44,10 @@ def formatwave(music_path):
     return wav_path, file_name
     
     
-ALBUM_PALETTE = {'PARCELS': {6:tuple((218, 217, 218)),
-                             7:tuple((218, 217, 218)),
-                             0:tuple((42, 75, 114)),
-                             1:tuple((42, 75, 114)),
-                             2:tuple((114, 85, 62)),
-                             3:tuple((114, 85, 62)),
-                             4:tuple((133, 152, 172)),
-                             5:tuple((133, 152, 172))},
-                 'LIVE VOL.1':{0:tuple((227,0,0)),
-                             1:tuple((227,0,0)),
-                             2:tuple((238,220,220)),
-                             3:tuple((238,220,220)),
-                             4:tuple((179,107,107)),
-                             5:tuple((179,107,107)),
-                             6:tuple((107,91,91)),
-                             7:tuple((107,91,91))},
-                 'DAY_NIGHT':{0:tuple((214,179,179)),
-                             1:tuple((214,179,179)),
-                             2:tuple((175,175,175)),
-                             3:tuple((175,175,175)),
-                             4:tuple((60,123,123)),
-                             5:tuple((60,123,123)),
-                             6:tuple((255,255,255)),
-                             7:tuple((255,255,255))}
-                 }
+ALBUM_PALETTE = CONFIG.get('COLOR_PALETTE', {})
 
-with open(os.path.join('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/playlist_utils','cache_jsons','pathuri_mapping.json')) as file:
+with open(os.path.join(CONFIG.get('PROJECT_BASE_PATH',None),CONFIG.get('UTIL_FOLDER',None),'cache_jsons','pathuri_mapping.json')) as file:
 	pathuri_mapping = json.load(file)
-	
-# dump all audio_features
-#for key in pathuri_mapping:
-#    uri = pathuri_mapping[key]
-#    audio_feature = SPOTIFY_CLIENT.audio_analysis(uri)
-#    with open("/home/pi/pythonproject/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(uri),'w') as file:
-#        json.dump(audio_feature, file)
-
-
 
 def wait(delay):
     end_time = time.time() + delay
@@ -149,7 +112,6 @@ class Player:
         self.feature_dict = self.get_features()
         self.nframes = self.feature_dict.get('nframes')
         pygame.mixer.init(frequency=self.feature_dict['framerate'])
-        pygame.mixer.set_num_channels(5)
         pygame.mixer.music.load(self.wav_path)
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.play()
@@ -169,7 +131,7 @@ class Player:
         self.nframes = self.feature_dict.get('nframes')
         self.track_uri = pathuri_mapping.get(self.file_name+'.wav',None)
         if self.track_uri is not None:
-            with open ("/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/playlist_utils/cache_jsons/audio_features/{}.json".format(self.track_uri)) as f:
+            with open (os.join(CONFIG.get('PROJECT_BASE_PATH',None),CONFIG.get('UTIL_FOLDER',None),"audio_features","{}.json".format(self.track_uri))) as f:
                 self.audio_features = json.load(f)
         else:
             self.audio_features = {}
@@ -189,7 +151,6 @@ class Player:
         pygame.mixer.set_num_channels(5)
         pygame.mixer.music.load(self.wav_path)
         pygame.mixer.music.set_volume(0.5)
-        #self.sensehat.show_message("Now Playing: {}".format(self.file_name), 0.05, W, background)
         pygame.mixer.music.play()
         #self.status = 'playing'
         if eo_fadein!= 0.0:
@@ -222,14 +183,14 @@ class Player:
             
             wait(delay-exec_time-0.006)
         
-    def _visualizer(self, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
+    def _visualizer(self, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255)):
         nums = int(self.nframes)
         h = abs(dct(self.feature_dict.get('wave_data')[0][self.feature_dict['nframes'] - nums:self.feature_dict['nframes']  - nums + self.display_size], 2))
         h = [min(self.display_size, int(i ** (1 / 2.5) * self.display_size / 100) + 1) for i in h]
         if self.viz_clr:
             x_color_dict = self.viz_clr
         else:
-            x_color_dict = ALBUM_PALETTE.get('PARCELS')
+            x_color_dict = ALBUM_PALETTE.get('PARCELS', {})
         self._draw_bars_pixels(h, bgd_clr=bgd_clr, fill_clr=fill_clr, x_color_dict=x_color_dict)
 
     def _draw_bars_pixels(self, h, bgd_clr=(0, 0, 0), fill_clr=(255, 255, 255), x_color_dict=None):
@@ -237,7 +198,9 @@ class Player:
         np_matrix = np.array(matrix).reshape(8, 8, 3)
         for i in range(len(h)):
             if x_color_dict is not None:
-                fill_clr = x_color_dict[i]
+                fill_clr = x_color_dict[str(i)]
+            else:
+                fill_clr = W
             np_matrix[i][(8 - h[i]):] = fill_clr
         # update column by column
         for X in range(0, 8):
@@ -273,7 +236,7 @@ class Player:
             # print greeting
             self.sensehat.clear()
             self.sensehat.show_message("{}, Martin :)".format(greeting), 0.04, W, background)
-            img = self.sensehat.load_image('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/pixels/wink.png')
+            img = self.sensehat.load_image(os.path.join(CONFIG.get("PROJECT_BASE_PATH"), 'pixels','wink.png'))
             self.sensehat.set_pixels(img)
             sleep(5)
         
@@ -331,5 +294,5 @@ class Player:
 
 ##test
 sense = SenseHat()
-testplayer = Player('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/Music', sense, volume=1,display_size=8)
+testplayer = Player(os.path.join(CONFIG.get('PROJECT_BASE_PATH'), CONFIG.get("MUSIC_FOLDER")), sense, volume=1, display_size=8)
 testplayer.run(greeting=True)

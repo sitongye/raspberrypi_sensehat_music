@@ -1,1 +1,588 @@
-{"Parcels": {"uri": "spotify:artist:3oKRxpszQKUjjaHz388fVA", "albums": {"Day/Night": {"uri": "spotify:album:2FJj7NVoRCAwjFus0O1BXd", "tracks": {"LIGHT": {"track_number": 1, "disc_number": 1, "duration_ms": 373814, "uri": "spotify:track:14tNhGhMYj6W5pPfdQoBmN"}, "Free": {"track_number": 2, "disc_number": 1, "duration_ms": 327866, "uri": "spotify:track:6kAOOamDflxqkrAWI6wZRR"}, "Comingback": {"track_number": 3, "disc_number": 1, "duration_ms": 311240, "uri": "spotify:track:6W1CYXq9pGEnNNCCW62xu8"}, "Theworstthing": {"track_number": 4, "disc_number": 1, "duration_ms": 183906, "uri": "spotify:track:0EvZksFiDpboeG4UVaIvJa"}, "Inthecity (Interlude)": {"track_number": 5, "disc_number": 1, "duration_ms": 117426, "uri": "spotify:track:0JSG8Hu6aMidPm1QRqboQD"}, "NowIcaresomemore": {"track_number": 6, "disc_number": 1, "duration_ms": 179533, "uri": "spotify:track:2gXYLIrLrHVViRCnbh8kCQ"}, "Somethinggreater": {"track_number": 7, "disc_number": 1, "duration_ms": 321466, "uri": "spotify:track:1Uxti0PEEdieT526B8dAxZ"}, "Daywalk": {"track_number": 8, "disc_number": 1, "duration_ms": 219626, "uri": "spotify:track:7umYeP4UtIrOrupomdhVPL"}, "Outside": {"track_number": 9, "disc_number": 1, "duration_ms": 433350, "uri": "spotify:track:2uyfIMxzUIUeO8vKf7s9LD"}, "SHADOW": {"track_number": 1, "disc_number": 2, "duration_ms": 181560, "uri": "spotify:track:3tIkgwEuDBY2xfYsaWZfo9"}, "Neverloved": {"track_number": 2, "disc_number": 2, "duration_ms": 251240, "uri": "spotify:track:017Zy32lho0ex9FOxSajEx"}, "Famous": {"track_number": 3, "disc_number": 2, "duration_ms": 289653, "uri": "spotify:track:3RZauEkvORMeP06npyaIYa"}, "Icallthishome": {"track_number": 4, "disc_number": 2, "duration_ms": 69013, "uri": "spotify:track:2SteMjckIBYamiiHEtEt11"}, "LordHenry": {"track_number": 5, "disc_number": 2, "duration_ms": 332213, "uri": "spotify:track:7dEFIvrudJoPhrzWSYgCJX"}, "Thefear": {"track_number": 6, "disc_number": 2, "duration_ms": 206693, "uri": "spotify:track:3CC8GnChqlFoM49XBDAZ0w"}, "Nightwalk": {"track_number": 7, "disc_number": 2, "duration_ms": 407213, "uri": "spotify:track:50yh4CvMEX4eAxtMeYFLWz"}, "Reflex": {"track_number": 8, "disc_number": 2, "duration_ms": 284066, "uri": "spotify:track:1u7fLNwWhqMpgpakKhfpXp"}, "Once": {"track_number": 9, "disc_number": 2, "duration_ms": 279706, "uri": "spotify:track:633Oe7gtfWB8lq1Vxyiahm"}, "Inside": {"track_number": 10, "disc_number": 2, "duration_ms": 182604, "uri": "spotify:track:3TsZbQfgWNERW39f2Wz5Wn"}, "Free - Single Version": {"track_number": 1, "disc_number": 3, "duration_ms": 219335, "uri": "spotify:track:26ka7pzhIonUoQFYjB6PbG"}, "Comingback - Single Version": {"track_number": 2, "disc_number": 3, "duration_ms": 216027, "uri": "spotify:track:6Z4au4V6reG130oGNDnXfU"}, "Somethinggreater - Single Version": {"track_number": 3, "disc_number": 3, "duration_ms": 209099, "uri": "spotify:track:1hp7aHiWB6zxcpehJR7xRO"}, "Famous - Single Version": {"track_number": 4, "disc_number": 3, "duration_ms": 203886, "uri": "spotify:track:3Mfg7kJLvEPBMnIwSly02u"}}}, "Live Vol. 1": {"uri": "spotify:album:4ckyPfMqe26PrOgEWdjWns", "tracks": {"Enter - from Hansa Studios, Berlin": {"track_number": 1, "disc_number": 1, "duration_ms": 179440, "uri": "spotify:track:55ePH4TKRkvSBmg5kI8K1m"}, "Myenemy - from Hansa Studios, Berlin": {"track_number": 2, "disc_number": 1, "duration_ms": 209949, "uri": "spotify:track:0oEUagxKUH6rKFYlqNC7rz"}, "Bemyself - from Hansa Studios, Berlin": {"track_number": 3, "disc_number": 1, "duration_ms": 268799, "uri": "spotify:track:3R1DPDoWdFdPeBj4aLwqBo"}, "Comedown - from Hansa Studios, Berlin": {"track_number": 4, "disc_number": 1, "duration_ms": 205116, "uri": "spotify:track:6GQEhwaBBC1E2pzlRlGity"}, "Lightenup - from Hansa Studios, Berlin": {"track_number": 5, "disc_number": 1, "duration_ms": 294927, "uri": "spotify:track:0ZcOprrr9ubO9ORfjbHjsx"}, "Gamesofluck - from Hansa Studios, Berlin": {"track_number": 6, "disc_number": 1, "duration_ms": 218208, "uri": "spotify:track:53ElE1J1DwuwVxpINXYJpb"}, "Intrude - from Hansa Studios, Berlin": {"track_number": 7, "disc_number": 1, "duration_ms": 49466, "uri": "spotify:track:4l9uFziLnJgpdBoBqUtoum"}, "Withorwithout - from Hansa Studios, Berlin": {"track_number": 8, "disc_number": 1, "duration_ms": 279557, "uri": "spotify:track:6GGXja13qA0BYNNAqgXQxS"}, "Retuned - from Hansa Studios, Berlin": {"track_number": 9, "disc_number": 1, "duration_ms": 44931, "uri": "spotify:track:35kZ2D9sADNOZ53zWOljkQ"}, "Everyroad - from Hansa Studios, Berlin": {"track_number": 10, "disc_number": 1, "duration_ms": 460876, "uri": "spotify:track:2s7nxagCl9fnFUoNIQxjnp"}, "Overnight - from Hansa Studios, Berlin": {"track_number": 11, "disc_number": 1, "duration_ms": 237464, "uri": "spotify:track:0ax2Np3bXCUXCcYmcX5x1x"}, "Untried - from Hansa Studios, Berlin": {"track_number": 12, "disc_number": 1, "duration_ms": 86035, "uri": "spotify:track:6VQDFodEZkjmfAqCCcVLOm"}, "Yourfault - from Hansa Studios, Berlin": {"track_number": 13, "disc_number": 1, "duration_ms": 264733, "uri": "spotify:track:2TeGrk8lm2DhSnAx63KAqv"}, "Closetowhy - from Hansa Studios, Berlin": {"track_number": 14, "disc_number": 1, "duration_ms": 246660, "uri": "spotify:track:4Y668YELGKHZ36nfTE3eBu"}, "Redline - from Hansa Studios, Berlin": {"track_number": 15, "disc_number": 1, "duration_ms": 178116, "uri": "spotify:track:0QugsGHunz3peiUxRg51WE"}, "IknowhowIfeel - from Hansa Studios, Berlin": {"track_number": 16, "disc_number": 1, "duration_ms": 175375, "uri": "spotify:track:4M3MUIXtQLN2qRPcwcpHzW"}, "Elude - from Hansa Studios, Berlin": {"track_number": 17, "disc_number": 1, "duration_ms": 178720, "uri": "spotify:track:04YsaTosW9B6i4yaTp766U"}, "Tieduprightnow - from Hansa Studios, Berlin": {"track_number": 18, "disc_number": 1, "duration_ms": 272817, "uri": "spotify:track:4cyygA6kLAF2H6QqwmACHd"}}}, "Parcels": {"uri": "spotify:album:6tNAnVG8xrmMbINuWutrNy", "tracks": {"Comedown": {"track_number": 1, "disc_number": 1, "duration_ms": 188724, "uri": "spotify:track:4H78HR8fBjJRWRueFVKo79"}, "Lightenup": {"track_number": 2, "disc_number": 1, "duration_ms": 237227, "uri": "spotify:track:1qtiESAzfGMw3YqJvI97ki"}, "Withorwithout": {"track_number": 3, "disc_number": 1, "duration_ms": 205048, "uri": "spotify:track:1Avnd5xLg7HmaNofmYk7RQ"}, "Tape": {"track_number": 4, "disc_number": 1, "duration_ms": 223552, "uri": "spotify:track:1hRQ0Kzy8gZXEikgrsOT9O"}, "Everyroad": {"track_number": 5, "disc_number": 1, "duration_ms": 515886, "uri": "spotify:track:5233fZGEk0FY0AzdgLaWch"}, "Yourfault": {"track_number": 6, "disc_number": 1, "duration_ms": 219114, "uri": "spotify:track:6jhdjIaErMtj2ymt0PufjG"}, "Closetowhy": {"track_number": 7, "disc_number": 1, "duration_ms": 330866, "uri": "spotify:track:6ynpjKUatAPVLmfgzTXvOG"}, "IknowhowIfeel": {"track_number": 8, "disc_number": 1, "duration_ms": 327399, "uri": "spotify:track:2IFaUS63AIAr9P46W1lEwt"}, "Exotica": {"track_number": 9, "disc_number": 1, "duration_ms": 312300, "uri": "spotify:track:2eC43PWHMbUnwqCRZcbGfo"}, "Tieduprightnow": {"track_number": 10, "disc_number": 1, "duration_ms": 181492, "uri": "spotify:track:2pC4aF8VvXFapppROIALIW"}, "Bemyself": {"track_number": 11, "disc_number": 1, "duration_ms": 147787, "uri": "spotify:track:2aE8uSjiWN0k4Nkvp0bUwB"}, "Credits (feat. Dean Dawson)": {"track_number": 12, "disc_number": 1, "duration_ms": 216214, "uri": "spotify:track:6gtFpBTeBiPAVQIoI4u3az"}}}, "Famous": {"uri": "spotify:album:4je6nXddkuy3pIUrTQGhSf", "tracks": {"Famous - Single Version": {"track_number": 1, "disc_number": 1, "duration_ms": 203886, "uri": "spotify:track:6qm8sNL2PXZHVT97gp3Y0J"}}}, "Theworstthing": {"uri": "spotify:album:3W88I4fwX6EqtR7qJ6I5fU", "tracks": {"Theworstthing": {"track_number": 1, "disc_number": 1, "duration_ms": 183906, "uri": "spotify:track:2zcqL8jheETC85OYOgaBl8"}, "Somethinggreater - Single Version": {"track_number": 2, "disc_number": 1, "duration_ms": 209099, "uri": "spotify:track:4A3TDvI38Wy7FThC4wsEDL"}, "Comingback - Single Version": {"track_number": 3, "disc_number": 1, "duration_ms": 216027, "uri": "spotify:track:38pM5lIgz375c1OC2Jogv4"}, "Free - Single Version": {"track_number": 4, "disc_number": 1, "duration_ms": 219335, "uri": "spotify:track:2yqfKGKv7Qgw9u6miwFlsA"}}}, "Somethinggreater": {"uri": "spotify:album:5sXizxvOi1y0HzAMQgYFLt", "tracks": {"Somethinggreater - Single Version": {"track_number": 1, "disc_number": 1, "duration_ms": 209099, "uri": "spotify:track:5ec2yrxKI6EhOdYS2XMbUP"}, "Comingback - Single Version": {"track_number": 2, "disc_number": 1, "duration_ms": 216027, "uri": "spotify:track:04MRiolZeFMzRF7QEH2qPD"}}}, "Comingback": {"uri": "spotify:album:0EszwSv58sj1RPucFPI9Xa", "tracks": {"Comingback - Single Version": {"track_number": 1, "disc_number": 1, "duration_ms": 216027, "uri": "spotify:track:5gw6D0cBSEBGlv68liOrne"}, "Free - Single Version": {"track_number": 2, "disc_number": 1, "duration_ms": 219335, "uri": "spotify:track:2EnQomlgFbpe8zeSOtKmY7"}}}, "Free": {"uri": "spotify:album:6O3OdDwmvAM9S9mpk4Z3pv", "tracks": {"Free - Single Version": {"track_number": 1, "disc_number": 1, "duration_ms": 219335, "uri": "spotify:track:6kPsTBAGRoAeCCbzYoAZIm"}}}, "SHADOW": {"uri": "spotify:album:52ePKlCZ6k2Z9tGR6SSFKr", "tracks": {"SHADOW": {"track_number": 1, "disc_number": 1, "duration_ms": 181560, "uri": "spotify:track:0i03wGCBt7FuCCGY4Myt9u"}}}, "Lightenup (Alex Metric Remix)": {"uri": "spotify:album:5CD57eZyNcQPV9kzXSkVnR", "tracks": {"Lightenup - Alex Metric Remix": {"track_number": 1, "disc_number": 1, "duration_ms": 438717, "uri": "spotify:track:1rIPNuXlthhSUphhva5d5y"}}}, "I Will Always Love You (triple j Like a Version)": {"uri": "spotify:album:2dHKLbIIuHsenXQSQq8IBW", "tracks": {"I Will Always Love You - triple j Like a Version": {"track_number": 1, "disc_number": 1, "duration_ms": 233539, "uri": "spotify:track:52ZhfQafwreJEUlNnmisTL"}}}, "Lightenup (Breakbot Remix)": {"uri": "spotify:album:2IbOrgaey6SUUpGiNBEhhS", "tracks": {"Lightenup - Breakbot Remix": {"track_number": 1, "disc_number": 1, "duration_ms": 274146, "uri": "spotify:track:0M2Mt7RzKZb9LNRFbNulKO"}}}, "Withorwithout": {"uri": "spotify:album:3cSQ3GaYyw5mPsfh6X9XA5", "tracks": {"Withorwithout": {"track_number": 1, "disc_number": 1, "duration_ms": 205048, "uri": "spotify:track:2mcmQR1Zq1wDl582Gm4aLC"}}}, "Lightenup": {"uri": "spotify:album:1zdg5hNDqpWtsN35ME7JuZ", "tracks": {"Lightenup": {"track_number": 1, "disc_number": 1, "duration_ms": 237227, "uri": "spotify:track:1dgAx1KJjIhjEB9c0iVTl9"}}}, "Bemyself": {"uri": "spotify:album:76S4TWGMsr0syZU7cWL4IH", "tracks": {"Bemyself": {"track_number": 1, "disc_number": 1, "duration_ms": 147787, "uri": "spotify:track:6tpAsLYl8JREa9JeMFUTBV"}}}, "Tieduprightnow": {"uri": "spotify:album:5v7PsESglCFeVcb7wNEWIW", "tracks": {"Tieduprightnow": {"track_number": 1, "disc_number": 1, "duration_ms": 249956, "uri": "spotify:track:66tkDkPsznE5zIHNt4QkXB"}}}, "Live from Spotify London": {"uri": "spotify:album:4ZxVfSt31YuoDN2oK7He22", "tracks": {"Overnight - liveatspotifylondon": {"track_number": 1, "disc_number": 1, "duration_ms": 251453, "uri": "spotify:track:7qnPkAQCXIP7ORlgPE8Ubo"}, "Allaround - liveatspotifylondon": {"track_number": 2, "disc_number": 1, "duration_ms": 331573, "uri": "spotify:track:1KDWdCFR1HoJpiNtgQ4yZ2"}, "Clockscared - liveatspotifylondon": {"track_number": 3, "disc_number": 1, "duration_ms": 257959, "uri": "spotify:track:7AjIaClCYWHsmdnoZIJ7Qb"}, "Older - liveatspotifylondon": {"track_number": 4, "disc_number": 1, "duration_ms": 220653, "uri": "spotify:track:7jJTgOVuTcDM1OmubOAV23"}}}, "Overnight": {"uri": "spotify:album:0cIynhird3mHUUs71R7zsj", "tracks": {"Overnight": {"track_number": 1, "disc_number": 1, "duration_ms": 219604, "uri": "spotify:track:0hhXziDUO0wNYPsstDQWN6"}}}, "Hideout Remixed": {"uri": "spotify:album:2C4qsP9lfXCM43uDiLyx5c", "tracks": {"Myenemy - Inagwa Remix": {"track_number": 1, "disc_number": 1, "duration_ms": 313802, "uri": "spotify:track:0j3eRa6J4Pgslmxt8ABFGW"}, "GamesofLuck - L'Imp\u00e9ratrice Remix": {"track_number": 2, "disc_number": 1, "duration_ms": 345010, "uri": "spotify:track:51Ik3MDQcvTFVpJORCwQCa"}, "Hideout - Disco Despair Remix": {"track_number": 3, "disc_number": 1, "duration_ms": 305777, "uri": "spotify:track:7I9TUQVZBqFdFa2P8HdhNj"}, "Older - Mouse on Mars Remix": {"track_number": 4, "disc_number": 1, "duration_ms": 271499, "uri": "spotify:track:2a6hUXQq95vwJKwVXGdP2B"}, "Allaround - Kraak & Smack Remix": {"track_number": 5, "disc_number": 1, "duration_ms": 367304, "uri": "spotify:track:47hrzIweXABNbatBydFtrl"}}}}}}
+{
+  "Parcels": {
+    "uri": "spotify:artist:3oKRxpszQKUjjaHz388fVA",
+    "albums": {
+      "Day/Night": {
+        "uri": "spotify:album:2FJj7NVoRCAwjFus0O1BXd",
+        "tracks": {
+          "LIGHT": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 373814,
+            "uri": "spotify:track:14tNhGhMYj6W5pPfdQoBmN"
+          },
+          "Free": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 327866,
+            "uri": "spotify:track:6kAOOamDflxqkrAWI6wZRR"
+          },
+          "Comingback": {
+            "track_number": 3,
+            "disc_number": 1,
+            "duration_ms": 311240,
+            "uri": "spotify:track:6W1CYXq9pGEnNNCCW62xu8"
+          },
+          "Theworstthing": {
+            "track_number": 4,
+            "disc_number": 1,
+            "duration_ms": 183906,
+            "uri": "spotify:track:0EvZksFiDpboeG4UVaIvJa"
+          },
+          "Inthecity (Interlude)": {
+            "track_number": 5,
+            "disc_number": 1,
+            "duration_ms": 117426,
+            "uri": "spotify:track:0JSG8Hu6aMidPm1QRqboQD"
+          },
+          "NowIcaresomemore": {
+            "track_number": 6,
+            "disc_number": 1,
+            "duration_ms": 179533,
+            "uri": "spotify:track:2gXYLIrLrHVViRCnbh8kCQ"
+          },
+          "Somethinggreater": {
+            "track_number": 7,
+            "disc_number": 1,
+            "duration_ms": 321466,
+            "uri": "spotify:track:1Uxti0PEEdieT526B8dAxZ"
+          },
+          "Daywalk": {
+            "track_number": 8,
+            "disc_number": 1,
+            "duration_ms": 219626,
+            "uri": "spotify:track:7umYeP4UtIrOrupomdhVPL"
+          },
+          "Outside": {
+            "track_number": 9,
+            "disc_number": 1,
+            "duration_ms": 433350,
+            "uri": "spotify:track:2uyfIMxzUIUeO8vKf7s9LD"
+          },
+          "SHADOW": {
+            "track_number": 1,
+            "disc_number": 2,
+            "duration_ms": 181560,
+            "uri": "spotify:track:3tIkgwEuDBY2xfYsaWZfo9"
+          },
+          "Neverloved": {
+            "track_number": 2,
+            "disc_number": 2,
+            "duration_ms": 251240,
+            "uri": "spotify:track:017Zy32lho0ex9FOxSajEx"
+          },
+          "Famous": {
+            "track_number": 3,
+            "disc_number": 2,
+            "duration_ms": 289653,
+            "uri": "spotify:track:3RZauEkvORMeP06npyaIYa"
+          },
+          "Icallthishome": {
+            "track_number": 4,
+            "disc_number": 2,
+            "duration_ms": 69013,
+            "uri": "spotify:track:2SteMjckIBYamiiHEtEt11"
+          },
+          "LordHenry": {
+            "track_number": 5,
+            "disc_number": 2,
+            "duration_ms": 332213,
+            "uri": "spotify:track:7dEFIvrudJoPhrzWSYgCJX"
+          },
+          "Thefear": {
+            "track_number": 6,
+            "disc_number": 2,
+            "duration_ms": 206693,
+            "uri": "spotify:track:3CC8GnChqlFoM49XBDAZ0w"
+          },
+          "Nightwalk": {
+            "track_number": 7,
+            "disc_number": 2,
+            "duration_ms": 407213,
+            "uri": "spotify:track:50yh4CvMEX4eAxtMeYFLWz"
+          },
+          "Reflex": {
+            "track_number": 8,
+            "disc_number": 2,
+            "duration_ms": 284066,
+            "uri": "spotify:track:1u7fLNwWhqMpgpakKhfpXp"
+          },
+          "Once": {
+            "track_number": 9,
+            "disc_number": 2,
+            "duration_ms": 279706,
+            "uri": "spotify:track:633Oe7gtfWB8lq1Vxyiahm"
+          },
+          "Inside": {
+            "track_number": 10,
+            "disc_number": 2,
+            "duration_ms": 182604,
+            "uri": "spotify:track:3TsZbQfgWNERW39f2Wz5Wn"
+          },
+          "Free - Single Version": {
+            "track_number": 1,
+            "disc_number": 3,
+            "duration_ms": 219335,
+            "uri": "spotify:track:26ka7pzhIonUoQFYjB6PbG"
+          },
+          "Comingback - Single Version": {
+            "track_number": 2,
+            "disc_number": 3,
+            "duration_ms": 216027,
+            "uri": "spotify:track:6Z4au4V6reG130oGNDnXfU"
+          },
+          "Somethinggreater - Single Version": {
+            "track_number": 3,
+            "disc_number": 3,
+            "duration_ms": 209099,
+            "uri": "spotify:track:1hp7aHiWB6zxcpehJR7xRO"
+          },
+          "Famous - Single Version": {
+            "track_number": 4,
+            "disc_number": 3,
+            "duration_ms": 203886,
+            "uri": "spotify:track:3Mfg7kJLvEPBMnIwSly02u"
+          }
+        }
+      },
+      "Live Vol. 1": {
+        "uri": "spotify:album:4ckyPfMqe26PrOgEWdjWns",
+        "tracks": {
+          "Enter - from Hansa Studios, Berlin": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 179440,
+            "uri": "spotify:track:55ePH4TKRkvSBmg5kI8K1m"
+          },
+          "Myenemy - from Hansa Studios, Berlin": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 209949,
+            "uri": "spotify:track:0oEUagxKUH6rKFYlqNC7rz"
+          },
+          "Bemyself - from Hansa Studios, Berlin": {
+            "track_number": 3,
+            "disc_number": 1,
+            "duration_ms": 268799,
+            "uri": "spotify:track:3R1DPDoWdFdPeBj4aLwqBo"
+          },
+          "Comedown - from Hansa Studios, Berlin": {
+            "track_number": 4,
+            "disc_number": 1,
+            "duration_ms": 205116,
+            "uri": "spotify:track:6GQEhwaBBC1E2pzlRlGity"
+          },
+          "Lightenup - from Hansa Studios, Berlin": {
+            "track_number": 5,
+            "disc_number": 1,
+            "duration_ms": 294927,
+            "uri": "spotify:track:0ZcOprrr9ubO9ORfjbHjsx"
+          },
+          "Gamesofluck - from Hansa Studios, Berlin": {
+            "track_number": 6,
+            "disc_number": 1,
+            "duration_ms": 218208,
+            "uri": "spotify:track:53ElE1J1DwuwVxpINXYJpb"
+          },
+          "Intrude - from Hansa Studios, Berlin": {
+            "track_number": 7,
+            "disc_number": 1,
+            "duration_ms": 49466,
+            "uri": "spotify:track:4l9uFziLnJgpdBoBqUtoum"
+          },
+          "Withorwithout - from Hansa Studios, Berlin": {
+            "track_number": 8,
+            "disc_number": 1,
+            "duration_ms": 279557,
+            "uri": "spotify:track:6GGXja13qA0BYNNAqgXQxS"
+          },
+          "Retuned - from Hansa Studios, Berlin": {
+            "track_number": 9,
+            "disc_number": 1,
+            "duration_ms": 44931,
+            "uri": "spotify:track:35kZ2D9sADNOZ53zWOljkQ"
+          },
+          "Everyroad - from Hansa Studios, Berlin": {
+            "track_number": 10,
+            "disc_number": 1,
+            "duration_ms": 460876,
+            "uri": "spotify:track:2s7nxagCl9fnFUoNIQxjnp"
+          },
+          "Overnight - from Hansa Studios, Berlin": {
+            "track_number": 11,
+            "disc_number": 1,
+            "duration_ms": 237464,
+            "uri": "spotify:track:0ax2Np3bXCUXCcYmcX5x1x"
+          },
+          "Untried - from Hansa Studios, Berlin": {
+            "track_number": 12,
+            "disc_number": 1,
+            "duration_ms": 86035,
+            "uri": "spotify:track:6VQDFodEZkjmfAqCCcVLOm"
+          },
+          "Yourfault - from Hansa Studios, Berlin": {
+            "track_number": 13,
+            "disc_number": 1,
+            "duration_ms": 264733,
+            "uri": "spotify:track:2TeGrk8lm2DhSnAx63KAqv"
+          },
+          "Closetowhy - from Hansa Studios, Berlin": {
+            "track_number": 14,
+            "disc_number": 1,
+            "duration_ms": 246660,
+            "uri": "spotify:track:4Y668YELGKHZ36nfTE3eBu"
+          },
+          "Redline - from Hansa Studios, Berlin": {
+            "track_number": 15,
+            "disc_number": 1,
+            "duration_ms": 178116,
+            "uri": "spotify:track:0QugsGHunz3peiUxRg51WE"
+          },
+          "IknowhowIfeel - from Hansa Studios, Berlin": {
+            "track_number": 16,
+            "disc_number": 1,
+            "duration_ms": 175375,
+            "uri": "spotify:track:4M3MUIXtQLN2qRPcwcpHzW"
+          },
+          "Elude - from Hansa Studios, Berlin": {
+            "track_number": 17,
+            "disc_number": 1,
+            "duration_ms": 178720,
+            "uri": "spotify:track:04YsaTosW9B6i4yaTp766U"
+          },
+          "Tieduprightnow - from Hansa Studios, Berlin": {
+            "track_number": 18,
+            "disc_number": 1,
+            "duration_ms": 272817,
+            "uri": "spotify:track:4cyygA6kLAF2H6QqwmACHd"
+          }
+        }
+      },
+      "Parcels": {
+        "uri": "spotify:album:6tNAnVG8xrmMbINuWutrNy",
+        "tracks": {
+          "Comedown": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 188724,
+            "uri": "spotify:track:4H78HR8fBjJRWRueFVKo79"
+          },
+          "Lightenup": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 237227,
+            "uri": "spotify:track:1qtiESAzfGMw3YqJvI97ki"
+          },
+          "Withorwithout": {
+            "track_number": 3,
+            "disc_number": 1,
+            "duration_ms": 205048,
+            "uri": "spotify:track:1Avnd5xLg7HmaNofmYk7RQ"
+          },
+          "Tape": {
+            "track_number": 4,
+            "disc_number": 1,
+            "duration_ms": 223552,
+            "uri": "spotify:track:1hRQ0Kzy8gZXEikgrsOT9O"
+          },
+          "Everyroad": {
+            "track_number": 5,
+            "disc_number": 1,
+            "duration_ms": 515886,
+            "uri": "spotify:track:5233fZGEk0FY0AzdgLaWch"
+          },
+          "Yourfault": {
+            "track_number": 6,
+            "disc_number": 1,
+            "duration_ms": 219114,
+            "uri": "spotify:track:6jhdjIaErMtj2ymt0PufjG"
+          },
+          "Closetowhy": {
+            "track_number": 7,
+            "disc_number": 1,
+            "duration_ms": 330866,
+            "uri": "spotify:track:6ynpjKUatAPVLmfgzTXvOG"
+          },
+          "IknowhowIfeel": {
+            "track_number": 8,
+            "disc_number": 1,
+            "duration_ms": 327399,
+            "uri": "spotify:track:2IFaUS63AIAr9P46W1lEwt"
+          },
+          "Exotica": {
+            "track_number": 9,
+            "disc_number": 1,
+            "duration_ms": 312300,
+            "uri": "spotify:track:2eC43PWHMbUnwqCRZcbGfo"
+          },
+          "Tieduprightnow": {
+            "track_number": 10,
+            "disc_number": 1,
+            "duration_ms": 181492,
+            "uri": "spotify:track:2pC4aF8VvXFapppROIALIW"
+          },
+          "Bemyself": {
+            "track_number": 11,
+            "disc_number": 1,
+            "duration_ms": 147787,
+            "uri": "spotify:track:2aE8uSjiWN0k4Nkvp0bUwB"
+          },
+          "Credits (feat. Dean Dawson)": {
+            "track_number": 12,
+            "disc_number": 1,
+            "duration_ms": 216214,
+            "uri": "spotify:track:6gtFpBTeBiPAVQIoI4u3az"
+          }
+        }
+      },
+      "Famous": {
+        "uri": "spotify:album:4je6nXddkuy3pIUrTQGhSf",
+        "tracks": {
+          "Famous - Single Version": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 203886,
+            "uri": "spotify:track:6qm8sNL2PXZHVT97gp3Y0J"
+          }
+        }
+      },
+      "Theworstthing": {
+        "uri": "spotify:album:3W88I4fwX6EqtR7qJ6I5fU",
+        "tracks": {
+          "Theworstthing": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 183906,
+            "uri": "spotify:track:2zcqL8jheETC85OYOgaBl8"
+          },
+          "Somethinggreater - Single Version": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 209099,
+            "uri": "spotify:track:4A3TDvI38Wy7FThC4wsEDL"
+          },
+          "Comingback - Single Version": {
+            "track_number": 3,
+            "disc_number": 1,
+            "duration_ms": 216027,
+            "uri": "spotify:track:38pM5lIgz375c1OC2Jogv4"
+          },
+          "Free - Single Version": {
+            "track_number": 4,
+            "disc_number": 1,
+            "duration_ms": 219335,
+            "uri": "spotify:track:2yqfKGKv7Qgw9u6miwFlsA"
+          }
+        }
+      },
+      "Somethinggreater": {
+        "uri": "spotify:album:5sXizxvOi1y0HzAMQgYFLt",
+        "tracks": {
+          "Somethinggreater - Single Version": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 209099,
+            "uri": "spotify:track:5ec2yrxKI6EhOdYS2XMbUP"
+          },
+          "Comingback - Single Version": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 216027,
+            "uri": "spotify:track:04MRiolZeFMzRF7QEH2qPD"
+          }
+        }
+      },
+      "Comingback": {
+        "uri": "spotify:album:0EszwSv58sj1RPucFPI9Xa",
+        "tracks": {
+          "Comingback - Single Version": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 216027,
+            "uri": "spotify:track:5gw6D0cBSEBGlv68liOrne"
+          },
+          "Free - Single Version": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 219335,
+            "uri": "spotify:track:2EnQomlgFbpe8zeSOtKmY7"
+          }
+        }
+      },
+      "Free": {
+        "uri": "spotify:album:6O3OdDwmvAM9S9mpk4Z3pv",
+        "tracks": {
+          "Free - Single Version": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 219335,
+            "uri": "spotify:track:6kPsTBAGRoAeCCbzYoAZIm"
+          }
+        }
+      },
+      "SHADOW": {
+        "uri": "spotify:album:52ePKlCZ6k2Z9tGR6SSFKr",
+        "tracks": {
+          "SHADOW": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 181560,
+            "uri": "spotify:track:0i03wGCBt7FuCCGY4Myt9u"
+          }
+        }
+      },
+      "Lightenup (Alex Metric Remix)": {
+        "uri": "spotify:album:5CD57eZyNcQPV9kzXSkVnR",
+        "tracks": {
+          "Lightenup - Alex Metric Remix": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 438717,
+            "uri": "spotify:track:1rIPNuXlthhSUphhva5d5y"
+          }
+        }
+      },
+      "I Will Always Love You (triple j Like a Version)": {
+        "uri": "spotify:album:2dHKLbIIuHsenXQSQq8IBW",
+        "tracks": {
+          "I Will Always Love You - triple j Like a Version": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 233539,
+            "uri": "spotify:track:52ZhfQafwreJEUlNnmisTL"
+          }
+        }
+      },
+      "Lightenup (Breakbot Remix)": {
+        "uri": "spotify:album:2IbOrgaey6SUUpGiNBEhhS",
+        "tracks": {
+          "Lightenup - Breakbot Remix": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 274146,
+            "uri": "spotify:track:0M2Mt7RzKZb9LNRFbNulKO"
+          }
+        }
+      },
+      "Withorwithout": {
+        "uri": "spotify:album:3cSQ3GaYyw5mPsfh6X9XA5",
+        "tracks": {
+          "Withorwithout": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 205048,
+            "uri": "spotify:track:2mcmQR1Zq1wDl582Gm4aLC"
+          }
+        }
+      },
+      "Lightenup": {
+        "uri": "spotify:album:1zdg5hNDqpWtsN35ME7JuZ",
+        "tracks": {
+          "Lightenup": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 237227,
+            "uri": "spotify:track:1dgAx1KJjIhjEB9c0iVTl9"
+          }
+        }
+      },
+      "Bemyself": {
+        "uri": "spotify:album:76S4TWGMsr0syZU7cWL4IH",
+        "tracks": {
+          "Bemyself": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 147787,
+            "uri": "spotify:track:6tpAsLYl8JREa9JeMFUTBV"
+          }
+        }
+      },
+      "Tieduprightnow": {
+        "uri": "spotify:album:5v7PsESglCFeVcb7wNEWIW",
+        "tracks": {
+          "Tieduprightnow": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 249956,
+            "uri": "spotify:track:66tkDkPsznE5zIHNt4QkXB"
+          }
+        }
+      },
+      "Live from Spotify London": {
+        "uri": "spotify:album:4ZxVfSt31YuoDN2oK7He22",
+        "tracks": {
+          "Overnight - liveatspotifylondon": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 251453,
+            "uri": "spotify:track:7qnPkAQCXIP7ORlgPE8Ubo"
+          },
+          "Allaround - liveatspotifylondon": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 331573,
+            "uri": "spotify:track:1KDWdCFR1HoJpiNtgQ4yZ2"
+          },
+          "Clockscared - liveatspotifylondon": {
+            "track_number": 3,
+            "disc_number": 1,
+            "duration_ms": 257959,
+            "uri": "spotify:track:7AjIaClCYWHsmdnoZIJ7Qb"
+          },
+          "Older - liveatspotifylondon": {
+            "track_number": 4,
+            "disc_number": 1,
+            "duration_ms": 220653,
+            "uri": "spotify:track:7jJTgOVuTcDM1OmubOAV23"
+          }
+        }
+      },
+      "Overnight": {
+        "uri": "spotify:album:0cIynhird3mHUUs71R7zsj",
+        "tracks": {
+          "Overnight": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 219604,
+            "uri": "spotify:track:0hhXziDUO0wNYPsstDQWN6"
+          }
+        }
+      },
+      "Hideout Remixed": {
+        "uri": "spotify:album:2C4qsP9lfXCM43uDiLyx5c",
+        "tracks": {
+          "Myenemy - Inagwa Remix": {
+            "track_number": 1,
+            "disc_number": 1,
+            "duration_ms": 313802,
+            "uri": "spotify:track:0j3eRa6J4Pgslmxt8ABFGW"
+          },
+          "GamesofLuck - L'Imp\u00e9ratrice Remix": {
+            "track_number": 2,
+            "disc_number": 1,
+            "duration_ms": 345010,
+            "uri": "spotify:track:51Ik3MDQcvTFVpJORCwQCa"
+          },
+          "Hideout - Disco Despair Remix": {
+            "track_number": 3,
+            "disc_number": 1,
+            "duration_ms": 305777,
+            "uri": "spotify:track:7I9TUQVZBqFdFa2P8HdhNj"
+          },
+          "Older - Mouse on Mars Remix": {
+            "track_number": 4,
+            "disc_number": 1,
+            "duration_ms": 271499,
+            "uri": "spotify:track:2a6hUXQq95vwJKwVXGdP2B"
+          },
+          "Allaround - Kraak & Smack Remix": {
+            "track_number": 5,
+            "disc_number": 1,
+            "duration_ms": 367304,
+            "uri": "spotify:track:47hrzIweXABNbatBydFtrl"
+          }
+        }
+      }
+    }
+  }
+}
