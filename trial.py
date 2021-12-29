@@ -46,7 +46,7 @@ def formatwave(music_path):
     
 ALBUM_PALETTE = CONFIG.get('COLOR_PALETTE', {})
 
-with open(os.path.join(CONFIG.get('PROJECT_BASE_PATH',None),CONFIG.get('UTIL_FOLDER',None),'cache_jsons','pathuri_mapping.json')) as file:
+with open(os.path.join(CONFIG.get('PROJECT_BASE_PATH',None),CONFIG.get('UTIL_FOLDER',None),'pathuri_mapping.json')) as file:
 	pathuri_mapping = json.load(file)
 
 def wait(delay):
@@ -117,7 +117,7 @@ class Player:
         pygame.mixer.music.play()
         self.status = 'playing'
         self.status = 'paused'
-        self.sensehat.show_message("{}".format(self.file_name), 0.03, W, background)
+        #self.sensehat.show_message("{}".format(self.file_name), 0.03, W, background)
         if self.music_path.split('/')[-2].upper() in ALBUM_PALETTE:
             self.viz_clr = ALBUM_PALETTE.get(self.music_path.split('/')[-2].upper())
         self.status = 'playing'
@@ -131,9 +131,10 @@ class Player:
         self.nframes = self.feature_dict.get('nframes')
         self.track_uri = pathuri_mapping.get(self.file_name+'.wav',None)
         if self.track_uri is not None:
-            with open (os.join(CONFIG.get('PROJECT_BASE_PATH',None),CONFIG.get('UTIL_FOLDER',None),"audio_features","{}.json".format(self.track_uri))) as f:
+            with open (os.path.join(CONFIG.get('PROJECT_BASE_PATH',None),CONFIG.get('UTIL_FOLDER',None),"audio_features","{}.json".format(self.track_uri))) as f:
                 self.audio_features = json.load(f)
         else:
+
             self.audio_features = {}
         if self.audio_features:
             bpm = round(self.audio_features.get('track').get('tempo'))
@@ -157,7 +158,7 @@ class Player:
             print('fade in',eo_fadein)
             wait(self.audio_features.get('beats')[0].get('start')+0.005)
         else:
-            wait(0.005)
+            wait(0.006)
 
         while metronome_on:
             start = time.time()
@@ -235,7 +236,7 @@ class Player:
                 greeting = 'Guten Abend'
             # print greeting
             self.sensehat.clear()
-            self.sensehat.show_message("{}, Martin :)".format(greeting), 0.04, W, background)
+            self.sensehat.show_message("{}, Martin ;)".format(greeting), 0.04, W, background)
             img = self.sensehat.load_image(os.path.join(CONFIG.get("PROJECT_BASE_PATH"), 'pixels','wink.png'))
             self.sensehat.set_pixels(img)
             sleep(5)
