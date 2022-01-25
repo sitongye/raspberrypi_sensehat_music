@@ -14,7 +14,7 @@ import wave
 import json
 import simpleaudio
 
-with open('config.json', 'r') as file:
+with open('/home/pi/Desktop/PARCELS_MUSICBOX_SY/raspberrypi_sensehat_music/config.json', 'r') as file:
     CONFIG = json.load(file)
 
 background = (0,0,0)
